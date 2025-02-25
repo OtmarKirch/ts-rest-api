@@ -14,7 +14,7 @@ function setupExpress() {
 function startServer() {
 
     app.listen(9000, ()=> {
-        console.log("HTTP Server running at http://localhost:9000");
+        console.log("v2 HTTP Server running at http://localhost:9000");
     })
 
 }
