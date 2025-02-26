@@ -1,3 +1,12 @@
+import * as dotenv from 'dotenv';
+
+const result = dotenv.config();
+
+if (result.error) {
+    console.log("Error loading .env file and aborting. Error:", result.error);
+    process.exit(1);
+}
+
 import * as express from 'express';
 import { root } from './routes/root';
 import * as utils from './utils';
@@ -9,11 +18,15 @@ function setupExpress() {
 }
 
 function startServer() {
+    let port: number;
     console.log('Process arguments:', process.argv);
     const portArg = process.argv[2];
-    let port;
 
-    if (utils.isInteger(portArg)) {
+    const portEnv = process.env.PORT;
+
+    if (utils.isInteger(portEnv)) {
+        port = parseInt(portEnv);
+    } else if (utils.isInteger(portArg)) {
         port = parseInt(portArg);
     } else {
         port = 9000; // Default port if the argument is not a valid integer
