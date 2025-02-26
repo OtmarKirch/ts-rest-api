@@ -10,6 +10,7 @@ if (result.error) {
 import * as express from 'express';
 import { root } from './routes/root';
 import * as utils from './utils';
+import { logger } from './logger';
 
 const app = express();
 
@@ -35,7 +36,8 @@ function startServer() {
     console.log(`Starting server on port ${port}...`);
 
     app.listen(port, () => {
-        console.log(`v2 HTTP Server running at http://localhost:${port}`);
+
+        logger.info(`v2 HTTP Server running at http://localhost:${port}`);
     });
 }
 
