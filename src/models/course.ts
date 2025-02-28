@@ -22,7 +22,7 @@ export class Course {
     title: string;
 
     @Column()
-    icon: string;
+    iconUrl: string;
 
     @Column()
     longDescription: string;
