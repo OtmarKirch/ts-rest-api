@@ -13,11 +13,14 @@ import { root } from './routes/root';
 import * as utils from './utils';
 import { logger } from './logger';
 import { AppDataSource } from './datasource';
+import { getAllCourses } from './routes/get-all-courses';
 
 const app = express();
 
 function setupExpress() {
     app.route("/").get(root);
+
+    app.route("/api/courses").get(getAllCourses)
 }
 
 function startServer() {
